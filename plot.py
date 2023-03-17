@@ -57,7 +57,7 @@ def parse_swv_data(data, ramp_start_peak, ramp_end_peak):
     return voltage_h, first_range, second_range, added_range, subtracted_range
 
 
-def plot_quick(file_name, ramp_start_peak, ramp_end_peak):
+def plot_quick(ramp_start_peak, ramp_end_peak, file_name = "data03-15_18_00_44.txt"):
     fig = Figure(figsize=(5, 5), dpi=100)
     fig1 = Figure(figsize=(5, 5), dpi=100)
     index = 0
@@ -139,13 +139,24 @@ def plot_quick(file_name, ramp_start_peak, ramp_end_peak):
     plt.waitforbuttonpress(0)
     plt.close()
 
+    fig3 = plt.figure(3)
+    plt.plot(readings)
+    plt.xlabel("time")
+    plt.ylabel("Current (μA)")
+    plt.draw()
+    plt.waitforbuttonpress(0)
+    plt.close()
+
+
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    
     print("Enter the file_name: ")
     file_name = input()
     print("Enter ramp start peak: ")
     ramp_start_peak = float(input())
     print("Enter ramp end peak: ")
     ramp_end_peak = float(input())
-    plot_quick(file_name,ramp_start_peak, ramp_end_peak)
+    plot_quick(ramp_start_peak, ramp_end_peak)
